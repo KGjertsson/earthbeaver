@@ -1,7 +1,7 @@
 # earthbeaver
 
-#AI - metod
+#AI - metod \n
 Recurrrent neural network - RNN
 
-#Preprocessing
+#Preprocessing \n
 LTA/STA - Long Term Averaging och Short Term Averaging
