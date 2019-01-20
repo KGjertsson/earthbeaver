@@ -7,4 +7,4 @@ if __name__ == '__main__':
     input_dir = Path('../data/lanl')
 
     # basic_feature_benchmark.run_kernel(input_dir, verbose=True)
-    basic_rnn_starter.run_kernel(input_dir, verbose=True)
+    basic_rnn_starter.run_kernel(input_dir)
