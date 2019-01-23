@@ -16,11 +16,16 @@ Preprocessing med STA/LTA kommer att behövas.
 Vad händer om vi tränar modellen på random utvalda 150k bitar?
 
 ## Features:
-mean
-median(abs)
-std
-max
-min
+mean  
+median(abs)  
+std  
+max  
+min  
+
+## TODO:
+Refactor code  
+Look into new state of the art kernel: https://www.kaggle.com/artgor/earthquakes-fe-more-features-and-samples
+
 
 
 
