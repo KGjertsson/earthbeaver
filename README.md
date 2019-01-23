@@ -24,8 +24,8 @@ min
 
 ## TODO:
 Refactor code  
-Look into new state of the art kernel: https://www.kaggle.com/artgor/earthquakes-fe-more-features-and-samples
-
+Look into new state of the art kernel: https://www.kaggle.com/artgor/earthquakes-fe-more-features-and-samples   
+Check length from peak to failure
 
 
 
