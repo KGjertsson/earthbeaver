@@ -15,6 +15,13 @@ Preprocessing med STA/LTA kommer att behövas.
 
 Vad händer om vi tränar modellen på random utvalda 150k bitar?
 
+## Features:
+mean
+median(abs)
+std
+max
+min
+
 
 
 
