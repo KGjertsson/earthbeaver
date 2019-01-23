@@ -105,6 +105,10 @@ venv.bak/
 
 # data
 data/
+*.csv
+
+# machine learning
+*.hdf5
 
 # idea
 *.idea
