@@ -7,7 +7,11 @@ Recurrrent neural network - RNN
 LTA/STA - Long Term Averaging och Short Term Averaging
 
 #Postprocessing
-Behövs?? Kanske det, viktningsfunktion/convulution?
+Behövs?? Kanske det, viktningsfunktion/convulution?  
+Man jämnar ut resultatdatan lite.  
+Splines  
+Gauss
+
 
 ## Tankar:
 Plocka ut 150K bitar på random för att validera modellen så man ser var den gör bra ifrån sig och var den gör dåligt

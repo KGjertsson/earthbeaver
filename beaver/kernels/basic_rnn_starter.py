@@ -32,9 +32,8 @@ def create_x(x, last_index=None, n_steps=150, step_length=1000):
     assert last_index - n_steps * step_length >= 0
 
     # Reshaping and approximate standardization with mean 5 and std 3.
-    feature_matrix = (x[
-                      (last_index - n_steps * step_length):last_index].reshape(
-        n_steps, -1) - 5) / 3
+    feature_matrix = \
+        x[(last_index - n_steps * step_length):last_index].reshape(n_steps, -1)
 
     # Extracts features of sequences of full length 1000, of the last 100
     # values and finally also of the last 10 observations.
@@ -105,9 +104,10 @@ def make_model(n_features):
     print('Creating model...')
     t_make_model = time()
     model = Sequential()
-    model.add(CuDNNGRU(64, return_sequences=True,
+    model.add(CuDNNGRU(64,
+                       # return_sequences=True,
                        input_shape=(None, n_features)))
-    model.add(CuDNNGRU(64))
+    # model.add(CuDNNGRU(64))
     model.add(Dense(10, activation='relu'))
     model.add(Dense(1))
 
@@ -156,7 +156,7 @@ def make_submission(input_dir, model):
 # We call "extract_features" three times, so the total number of features
 # is 3 * 5 + 1 (last value) = 16
 def run_kernel(input_dir, n_features=16, batch_size=32):
-    train_model = False
+    train_model = True
 
     if train_model:
         train_data = load_train_data(input_dir)
