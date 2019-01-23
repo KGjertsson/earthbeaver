@@ -172,26 +172,26 @@ def run_kernel(input_dir, n_features=16, batch_size=32):
             np.argmin(history.history['val_loss'])))
     else:
         train_data = load_train_data(input_dir)
+
         model = load_model('model.hdf5')
         train_data_length = len(train_data)
-        train_predictions = pd.DataFrame()
 
-        for i in range(0, train_data_length, 150000):
+        columns = ['end_index', 'time_to_boom', 'ground_truth']
+        train_predictions = pd.DataFrame(columns=columns)
+
+        for pandas_index, i in enumerate(range(0, train_data_length, 150000)):
             end_index = i + 150000
             if i + 150000 > train_data_length:
                 end_index = train_data_length - 1
+                i = end_index - 150000
 
-            train_features = create_x(train_data[i:end_index])
+            train_features = create_x(train_data[i:end_index, 0])
             train_features = np.expand_dims(train_features, 0)
-            prediction = model.predict(train_features)
+            prediction = model.predict(train_features)[0][0]
+            train_predictions.loc[pandas_index] = \
+                [i, prediction, train_data[end_index, 1]]
 
-            train_predictions.append(
-                {end_index: prediction},
-                ignore_index=True)
-
-            if i == 0:
-                train_predictions.to_csv('tiny_retard')
-        train_predictions.to_csv('train_predictions')
+        train_predictions.to_csv('train_predictions.csv')
         print(train_predictions)
 
 # TODO: add https://en.wikipedia.org/wiki/Nash%E2%80%93Sutcliffe_model_efficiency_coefficient as loss
