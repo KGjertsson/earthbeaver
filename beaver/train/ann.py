@@ -1,7 +1,10 @@
 from keras.callbacks import ModelCheckpoint
 import numpy as np
 
-from ..data_processing.feature_extraction import create_x
+from obspy.signal.trigger import recursive_sta_lta
+
+from ..data_processing.feature_extraction import create_x, \
+    extract_multiple_features
 
 
 # The generator randomly selects "batch_size" ending positions of sub-time
@@ -22,11 +25,36 @@ def generator(data, n_features, min_index=0, max_index=None, batch_size=16,
         samples = np.zeros((batch_size, n_steps, n_features))
         targets = np.zeros(batch_size, )
 
+        # data[:, 0] = recursive_sta_lta(data[:, 0], 20000, 150000)
+
         for j, row in enumerate(rows):
             samples[j] = create_x(data[:, 0], last_index=row,
                                   n_steps=n_steps, step_length=step_length)
             targets[j] = data[row, 1]
         yield samples, targets
+
+
+def multi_feature_generator(x_frame, rows, segments, batch_size):
+    while True:
+        x_batch = []
+        y_batch = []
+
+        batch_indices = list()
+        for batch_index in range(batch_size):
+            segment = np.random.randint(0, segments)
+            while segment in batch_indices:
+                segment = np.random.randint(0, segments)
+            batch_indices.append(segment)
+
+            x_features, y = extract_multiple_features(x_frame, segment, rows)
+
+            x_batch.append(x_features)
+            y_batch.append(y)
+
+        x_batch = np.asarray(x_batch)
+        y_batch = np.asarray(y_batch)
+
+        yield x_batch, y_batch
 
 
 def init_generators(train_data, n_features, batch_size):
@@ -36,6 +64,11 @@ def init_generators(train_data, n_features, batch_size):
 
 
 def perform_training(model, train_gen, valid_gen):
+    if valid_gen:
+        validation_steps = 100
+    else:
+        validation_steps = None
+
     callbacks = [ModelCheckpoint("model.hdf5", monitor='val_loss',
                                  save_weights_only=False, period=3)]
     history = model.fit_generator(train_gen,
@@ -46,5 +79,5 @@ def perform_training(model, train_gen, valid_gen):
                                   callbacks=callbacks,
                                   validation_data=valid_gen,
                                   # n_valid // batch_size)
-                                  validation_steps=100)
+                                  validation_steps=validation_steps)
     return history

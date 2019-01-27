@@ -3,16 +3,27 @@ from time import time
 import numpy as np
 import pandas as pd
 
+
 from ..data_processing.feature_extraction import create_x
 
 
-def load_train_data(input_dir):
+def load_train_data_numpy(input_dir):
     print('Loading train data...')
     t_load = time()
     train_data = pd.read_csv(
         input_dir / "train.csv",
         dtype={"acoustic_data": np.float32, "time_to_failure": np.float32})
     train_data = train_data.values
+    print('Done {} s'.format(time() - t_load))
+    return train_data
+
+
+def load_train_data_pandas(input_dir):
+    print('Loading train data...')
+    t_load = time()
+    train_data = pd.read_csv(
+        input_dir / "train.csv",
+        dtype={"acoustic_data": np.float32, "time_to_failure": np.float32})
     print('Done {} s'.format(time() - t_load))
     return train_data
 

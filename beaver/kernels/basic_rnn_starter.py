@@ -15,11 +15,10 @@ def run_kernel(input_dir, n_features=16, batch_size=32):
     train_model = True
 
     if train_model:
-        train_data = io_utils.load_train_data(input_dir)
-        train_gen, valid_gen = ann.init_generators(train_data, n_features,
-                                                   batch_size)
+        train_data = io_utils.load_train_data_numpy(input_dir)
+        train_gen, _ = ann.init_generators(train_data, n_features, batch_size)
         model = make_model(n_features)
-        history = ann.perform_training(model, train_gen, valid_gen)
+        history = ann.perform_training(model, train_gen, None)
         # plot_training_history(history)
         io_utils.make_submission(input_dir, model)
 
@@ -27,7 +26,7 @@ def run_kernel(input_dir, n_features=16, batch_size=32):
             np.min(history.history['val_loss']),
             np.argmin(history.history['val_loss'])))
     else:
-        train_data = io_utils.load_train_data(input_dir)
+        train_data = io_utils.load_train_data_numpy(input_dir)
 
         model = load_model('model.hdf5')
         train_data_length = len(train_data)
