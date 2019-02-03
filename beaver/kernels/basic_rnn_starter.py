@@ -23,8 +23,8 @@ def run_kernel(input_dir, n_features=16, batch_size=32):
         io_utils.make_submission(input_dir, model)
 
         print('Min val loss: {} at epoch: {}'.format(
-            np.min(history.history['val_loss']),
-            np.argmin(history.history['val_loss'])))
+            np.min(history.history['loss']),
+            np.argmin(history.history['loss'])))
     else:
         train_data = io_utils.load_train_data_numpy(input_dir)
 
