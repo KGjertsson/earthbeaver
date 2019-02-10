@@ -1,12 +1,12 @@
 # earthbeaver
 
-##AI - metod
+## AI - metod
 Recurrrent neural network - RNN
 
-##Preprocessing
+## Preprocessing
 LTA/STA - Long Term Averaging och Short Term Averaging
 
-##Postprocessing
+## Postprocessing
 ~~Behövs?? Kanske det, viktningsfunktion/convulution?  ~~
 Avfärdad då tvälingsdata är **osorterade** 150k bitar.
 
