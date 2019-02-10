@@ -4,7 +4,7 @@
 Recurrrent neural network - RNN
 
 ## Preprocessing
-LTA/STA - Long Term Averaging och Short Term Averaging
+~~LTA/STA - Long Term Averaging och Short Term Averaging~~ - flyttad till features
 
 ## Postprocessing
 ~~Behövs?? Kanske det, viktningsfunktion/convulution?  ~~
@@ -23,7 +23,9 @@ mean
 median(abs)  
 std  
 max  
-min  
+min
+Classic LTA/STA
+Recursive LTA/STA??
 
 ## TODO:
 Refactor code  
