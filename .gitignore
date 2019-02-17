@@ -112,3 +112,5 @@ data/
 
 # idea
 *.idea
+
+scripts/train/Graph

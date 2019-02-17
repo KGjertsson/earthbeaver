@@ -23,7 +23,7 @@ def load_statistical_data(root_data_dir, val_split=None):
                    'time_to_failure': np.float64})
 
         x_train = pd.DataFrame()
-        y_train = pd.Series()
+        y_train = pd.DataFrame()
 
         df = pd.DataFrame()
         for chunk in tqdm(train):
