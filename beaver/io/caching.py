@@ -30,7 +30,7 @@ def load_statistical_data(root_data_dir, val_split=None):
             df = df.append(chunk)
             if len(df) >= 150000:
                 df = df[-150000:]
-                ch = feature_extraction.gen_statistical_features(
+                ch = feature_extraction.gen_statistical_features2(
                     df['acoustic_data'])
                 x_train = x_train.append(ch, ignore_index=True)
                 y_train = y_train.append(

@@ -9,7 +9,8 @@ Created on Sat Jan 19 13:04:56 2019
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
-from obspy.signal.trigger import recursive_sta_lta
+#from obspy.signal.trigger import recursive_sta_lta
+from scipy.signal import savgol_filter
 
 print('loading file...')
 
@@ -36,9 +37,9 @@ for file in files:
     print('plotting'+str(file)[32:-4])
     #df[df.columns[1]].plot(grid=True, label=df.columns[1])
     #df[df.columns[2]].plot(grid=True, label=df.columns[2])
-    x=recursive_sta_lta(df['acoustic_data'],20000,150000)
+    x=savgol_filter(df['acoustic_data'],20001,2)
     plt.plot(x)
-    plt.savefig('C:\\recursive'+str(file)[32:-4])
+    plt.savefig('C:\\savgol2'+str(file)[32:-4])
     
     plt.close('all')
     plt.legend()
