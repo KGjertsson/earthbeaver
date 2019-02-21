@@ -22,7 +22,7 @@ def main():
         x_tr,
         y_tr.values,
         validation_split=0.,
-        epochs=1000,
+        epochs=3,
         batch_size=32,
         callbacks=[
             callbacks.TensorBoard(

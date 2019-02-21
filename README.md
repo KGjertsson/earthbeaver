@@ -27,10 +27,20 @@ min
 Classic LTA/STA
 Recursive LTA/STA??
 
-## TODO:
-Refactor code  
-Look into new state of the art kernel: https://www.kaggle.com/artgor/earthquakes-fe-more-features-and-samples   
-Check length from peak to failure
+##  Performance log:
+
+| model         | features              | epochs train  | train mad     | test mad |
+| ------------- |:---------------------:|--------------:| -------------:| --------:|
+| simpleffnn    | statistical features1 | 1000          |1.2            | 1.8      |
+| simpleffnn    | statistical features1 | 100           |1.7            |1.672     |
+| simpleffnn    | statistical features1 | 10            |2.0029595604348|1.537     |
+| simpleffnn    | statistical features1 | 3             |2.0029595604348|1.540     |
+| simpleffnn    | statistical features3 | 1000          |1.2999233295860|          |
+
+
+
+
+
 
 
 

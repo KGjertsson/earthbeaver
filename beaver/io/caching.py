@@ -63,9 +63,9 @@ def load_statistical_data_parallel(root_data_dir):
 
 
 def load_statistical_data(root_data_dir):
-    if Path(str(STATISTICAL_FEATURE_FILE) + '~x_train.csv').exists():
-        x_train = pd.read_csv(str(STATISTICAL_FEATURE_FILE) + '~x_train.csv')
-        y_train = pd.read_csv(str(STATISTICAL_FEATURE_FILE) + '~y_train.csv')
+    if Path(str(STATISTICAL_FEATURE_FILE) + '_1~x_train.csv').exists():
+        x_train = pd.read_csv(str(STATISTICAL_FEATURE_FILE) + '_1~x_train.csv')
+        y_train = pd.read_csv(str(STATISTICAL_FEATURE_FILE) + '_1~y_train.csv')
     else:
         train = pd.read_csv(
             root_data_dir / 'lanl/train.csv',
@@ -82,7 +82,7 @@ def load_statistical_data(root_data_dir):
             df = df.append(chunk)
             if len(df) >= 150000:
                 df = df[-150000:]
-                ch = feature_extraction.gen_statistical_features3(
+                ch = feature_extraction.gen_statistical_features(
                     df['acoustic_data'])
                 x_train = x_train.append(ch, ignore_index=True)
                 y_train = y_train.append(
