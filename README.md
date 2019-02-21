@@ -29,13 +29,18 @@ Recursive LTA/STA??
 
 ##  Performance log:
 
-| model         | features              | epochs train  | train mad     | test mad |
-| ------------- |:---------------------:|--------------:| -------------:| --------:|
-| simpleffnn    | statistical features1 | 1000          |1.2            | 1.8      |
-| simpleffnn    | statistical features1 | 100           |1.7            |1.672     |
-| simpleffnn    | statistical features1 | 10            |2.0029595604348|1.537     |
-| simpleffnn    | statistical features1 | 3             |2.0029595604348|1.540     |
-| simpleffnn    | statistical features3 | 1000          |1.2999233295860|          |
+| model         | features              | dropout       |epochs train  | train mad     | test mad |
+| ------------- |:---------------------:|--------------:|--------------:| -------------:| --------:|
+| simpleffnn    | statistical features1 | 0.25          | 1000          |1.2000000000000| 1.800    |
+| simpleffnn    | statistical features1 | 0.25          | 100           |1.7000000000000| 1.672    |
+| simpleffnn    | statistical features1 | 0.25          | 10            |2.0029595604348| 1.537    |
+| simpleffnn    | statistical features1 | 0.25          | 3             |2.0029595604348| 1.540    |
+| simpleffnn    | statistical features1 | 0.5           | 1000          |1.6404929039735|          |
+| simpleffnn    | statistical features1 | 0.5           | 100           |1.9273089859860|          |
+| simpleffnn    | statistical features1 | 0.5           | 10            |2.0137530461991|          |
+| simpleffnn    | statistical features1 | 0.5           | 3             |2.0259630969190|          |
+| --------------|-----------------------|---------------|---------------|---------------|----------|
+| simpleffnn    | statistical features3 |               | 1000          |1.2999233295860|          |
 
 
 

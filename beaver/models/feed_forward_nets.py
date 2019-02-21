@@ -3,18 +3,18 @@ from keras.layers import Activation, Dense, Dropout
 from keras.layers.normalization import BatchNormalization
 
 
-def make_simple_ffn(x_tr):
+def simple_ffnn(x_tr, dropout_factor=0.25):
     model = Sequential()
 
     model.add(Dense(128, kernel_initializer='normal', input_dim=x_tr.shape[1]))
     model.add(BatchNormalization())
     model.add(Activation('tanh'))
-    model.add(Dropout(0.25))
+    model.add(Dropout(dropout_factor))
 
     model.add(Dense(64, kernel_initializer='normal'))
     model.add(BatchNormalization())
     model.add(Activation('tanh'))
-    model.add(Dropout(0.25))
+    model.add(Dropout(dropout_factor))
 
     model.add(Dense(32, kernel_initializer='normal'))
     model.add(Activation('tanh'))
