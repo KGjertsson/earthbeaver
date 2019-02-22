@@ -47,10 +47,10 @@ def submit(root_data_dir, sc, model, feature_function_name, network_type,
 
 def main():
     root_data_dir = Path('../../data/')
-    dropout_factor = 0.5
-    feature_function = 'gen_statistical_features1'
+    dropout_factor = 0.25
+    feature_function = 'gen_statistical_features3'
     network_type = 'simple_ffnn'
-    epochs = 3
+    epochs = 1000
 
     x_tr, y_tr, sc = caching.load_statistical_data(
         root_data_dir=root_data_dir,
