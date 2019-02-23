@@ -37,8 +37,8 @@ Recursive LTA/STA??
 | simpleffnn    | statistical features1 | 0.25          | 3             |2.0029595604348| 1.540    |
 | simpleffnn    | statistical features1 | 0.5           | 1000          |1.6404929039735| 1.650    |
 | simpleffnn    | statistical features1 | 0.5           | 100           |1.9273089859860| 1.596    |
-| simpleffnn    | statistical features1 | 0.5           | 10            |2.0137530461991|          |
-| simpleffnn    | statistical features1 | 0.5           | 3             |2.0259630969190|          |
+| simpleffnn    | statistical features1 | 0.5           | 10            |2.0137530461991| 1.531    |
+| simpleffnn    | statistical features1 | 0.5           | 3             |2.0259630969190| 1.497    |
 | --------------|-----------------------|---------------|---------------|---------------|----------|
 | simpleffnn    | statistical features3 |               | 1000          |1.2999233295860|          |
 | simpleffnn    | statistical features3 |               | 100           |               |          |
