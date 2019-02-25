@@ -1,6 +1,32 @@
 from keras.models import Sequential
 from keras.layers import Activation, Dense, Dropout
 from keras.layers.normalization import BatchNormalization
+import numpy as np
+
+
+class AverageNet:
+
+    def __init__(self, n_networks, network_function, *network_args,
+                 **network_kwargs):
+        self.networks = [network_function(*network_args, **network_kwargs)
+                         for _ in range(n_networks)]
+
+    def fit(self, x_tr, y_tr, validation_split, epochs, batch_size, callbacks):
+        for model in self.networks:
+            model.fit(
+                x_tr,
+                y_tr,
+                validation_split=validation_split,
+                epochs=epochs,
+                batch_size=batch_size,
+                callbacks=callbacks
+            )
+
+    def predict(self, x_tr):
+        return np.average(
+            [model.predict(x_tr) for model in self.networks],
+            axis=0
+        )
 
 
 def simple_ffnn(x_tr, dropout_factor=0.25):

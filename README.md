@@ -28,6 +28,7 @@ Classic LTA/STA
 Recursive LTA/STA??
 
 ##  Performance log:
+View tensorboard with: tensorboard --logdir=Graph --host=localhost --port=8088
 
 | model         | features              | dropout       |epochs train  | train mad     | test mad |
 | ------------- |:---------------------:|--------------:|--------------:| -------------:| --------:|
@@ -40,10 +41,14 @@ Recursive LTA/STA??
 | simpleffnn    | statistical features1 | 0.5           | 10            |2.0137530461991| 1.531    |
 | simpleffnn    | statistical features1 | 0.5           | 3             |2.0259630969190| 1.497    |
 | --------------|-----------------------|---------------|---------------|---------------|----------|
-| simpleffnn    | statistical features3 |               | 1000          |1.2999233295860|          |
-| simpleffnn    | statistical features3 |               | 100           |               |          |
-| simpleffnn    | statistical features3 |               | 10            |               |          |
-| simpleffnn    | statistical features3 |               | 3             |               |          |
+| simpleffnn    | statistical features3 | 0.25          | 1000          |1.3058205365700| 1.830    |
+| simpleffnn    | statistical features3 | 0.25          | 100           |1.8733245993213| 1.622    |
+| simpleffnn    | statistical features3 | 0.25          | 10            |2.0358140996289| 1.522    |
+| simpleffnn    | statistical features3 | 0.25          | 3             |2.0310845783116| 1.489    |
+| simpleffnn    | statistical features3 | 0.5           | 10            |               |          |
+| simpleffnn    | statistical features3 | 0.5           | 3             |               |          |
+| --------------|-----------------------|---------------|---------------|---------------|----------|
+| simpleffnn~10 | statistical features3 | 0.5           | 3             |               |          |
 
 
 

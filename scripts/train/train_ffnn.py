@@ -11,7 +11,7 @@ from beaver.models import feed_forward_nets
 
 
 def submit(root_data_dir, sc, model, feature_function_name, network_type,
-           dropout_factor, epochs):
+           dropout_factor, epochs, n_networks=1):
     submission = pd.read_csv(
         root_data_dir / 'lanl/sample_submission.csv', index_col='seg_id')
     x_test = pd.DataFrame()
@@ -40,8 +40,11 @@ def submit(root_data_dir, sc, model, feature_function_name, network_type,
                       '~dropout_' + \
                       str(dropout_factor) + \
                       '~' + \
-                      feature_function_name + \
-                      '.csv'
+                      feature_function_name
+    if n_networks > 1:
+        submission_file = submission_file + '~n_networks=' + str(n_networks)
+    submission_file = submission_file + '.csv'
+
     submission.to_csv(submission_file)
 
 
@@ -50,14 +53,23 @@ def main():
     dropout_factor = 0.25
     feature_function = 'gen_statistical_features3'
     network_type = 'simple_ffnn'
-    epochs = 1000
+    epochs = 3
+    n_networks = 1
 
     x_tr, y_tr, sc = caching.load_statistical_data(
         root_data_dir=root_data_dir,
         feature_function_name=feature_function)
 
-    model_function = getattr(feed_forward_nets, network_type)
-    model = model_function(x_tr, dropout_factor)
+    # model_function = getattr(feed_forward_nets, network_type)
+    # model = model_function(x_tr, dropout_factor)
+
+    model = feed_forward_nets.AverageNet(
+        n_networks,
+        getattr(feed_forward_nets, network_type),
+        x_tr,
+        dropout_factor
+    )
+
     model.fit(
         x_tr,
         y_tr.values,
@@ -82,7 +94,8 @@ def main():
         feature_function,
         network_type,
         dropout_factor,
-        epochs)
+        epochs,
+        n_networks)
 
 
 if __name__ == '__main__':
