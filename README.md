@@ -30,7 +30,7 @@ Recursive LTA/STA??
 ##  Performance log:
 View tensorboard with: tensorboard --logdir=Graph --host=localhost --port=8088
 
-| model         | features              | dropout       |epochs train  | train mad     | test mad |
+| model         | features              | dropout       |epochs train   | train mae     | test mae |
 | ------------- |:---------------------:|--------------:|--------------:| -------------:| --------:|
 | simpleffnn    | statistical features1 | 0.25          | 1000          |1.2000000000000| 1.800    |
 | simpleffnn    | statistical features1 | 0.25          | 100           |1.7000000000000| 1.672    |
@@ -46,8 +46,10 @@ View tensorboard with: tensorboard --logdir=Graph --host=localhost --port=8088
 | simpleffnn    | statistical features3 | 0.25          | 10            |2.0358140996289| 1.522    |
 | simpleffnn    | statistical features3 | 0.25          | 3             |2.0310845783116| 1.489    |
 | simpleffnn    | statistical features3 | 0.5           | 10            |               |          |
-| simpleffnn    | statistical features3 | 0.5           | 3             |               |          |
+| simpleffnn    | statistical features3 | 0.5           | 3             |2.0409161202138| 1.471    |
 | --------------|-----------------------|---------------|---------------|---------------|----------|
+| simpleffnn~10 | statistical features3 | 0.25          | 3             |2.0229714746295| 1.484    |
+| simpleffnn~100| statistical features3 | 0.5           | 3             |               |          |
 | simpleffnn~10 | statistical features3 | 0.5           | 3             |               |          |
 
 
