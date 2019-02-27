@@ -54,7 +54,7 @@ def main():
     feature_function = 'gen_statistical_features3'
     network_type = 'simple_ffnn'
     epochs = 3
-    n_networks = 100
+    n_networks = 10
 
     x_tr, y_tr, sc = caching.load_statistical_data(
         root_data_dir=root_data_dir,

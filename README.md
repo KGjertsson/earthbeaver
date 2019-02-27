@@ -49,8 +49,13 @@ View tensorboard with: tensorboard --logdir=Graph --host=localhost --port=8088
 | simpleffnn    | statistical features3 | 0.5           | 3             |2.0409161202138| 1.471    |
 | --------------|-----------------------|---------------|---------------|---------------|----------|
 | simpleffnn~10 | statistical features3 | 0.25          | 3             |2.0229714746295| 1.484    |
-| simpleffnn~100| statistical features3 | 0.5           | 3             |               |          |
-| simpleffnn~10 | statistical features3 | 0.5           | 3             |               |          |
+| simpleffnn~100| statistical features3 | 0.5           | 3             |2.0308562487956| 1.469    |
+| simpleffnn~10 | statistical features3 | 0.5           | 3             |2.0319643617985| 1.473    |
+| --------------|-----------------------|---------------|---------------|---------------|----------|
+| simpleffnn    | statistical features3 | 0.6           | 3             |               |          |
+| simpleffnn    | statistical features3 | 0.7           | 3             |               |          |
+| simpleffnn    | statistical features3 | 0.8           | 3             |               |          |
+
 
 
 
