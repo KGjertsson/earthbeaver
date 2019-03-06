@@ -54,22 +54,23 @@ def simple_ffnn(x_tr, dropout_factor=0.25):
     return model
 
 
-def make_heavy_ffn(x_tr):
+def heavy_ffnn(x_tr, dropout_factor=0.25, activation='relu'):
     model = Sequential()
 
     model.add(Dense(4096, kernel_initializer='normal',
                     input_dim=x_tr.shape[1]))
     model.add(BatchNormalization())
-    model.add(Activation('tanh'))
-    model.add(Dropout(0.25))
+    model.add(Activation(activation))
+    model.add(Dropout(dropout_factor))
 
     model.add(Dense(4096, kernel_initializer='normal'))
     model.add(BatchNormalization())
-    model.add(Activation('tanh'))
-    model.add(Dropout(0.25))
+    model.add(Activation(activation))
+    model.add(Dropout(dropout_factor))
 
     model.add(Dense(32, kernel_initializer='normal'))
-    model.add(Activation('tanh'))
+    model.add(BatchNormalization())
+    model.add(Activation(activation))
 
     model.add(Dense(1, kernel_initializer='normal'))
     model.add(Activation('linear'))
